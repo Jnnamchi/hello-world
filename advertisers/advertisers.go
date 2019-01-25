@@ -1,31 +1,53 @@
 package advertisers
 
 import (
-	"fmt"
+	"log"
 )
 
-// SubmitBids checks the conditions for all advertisers and returns the highest bid
-func SubmitBids(adRequest map[string]string) BidObj {
+var (
+	// ShapeParameter is the IXRTB Paramter for shape of the available ad-placement
+	ShapeParameter = "s"
 
-	fmt.Println("Processing request:", adRequest)
+	// LikesParameter is the IXRTB Paramter for the ad-viewer's top area of interest
+	LikesParameter = "l"
 
-	topBid := BidObj{}
+	// DislikesParameter is the IXRTB Paramter for the ad-viewer's top area of disinterest
+	DislikesParameter = "d"
 
-	for _, advertiser := range advertisers {
-		bid := getTopBidForAdvertiser(adRequest, advertiser)
+	// AgeParameter is the IXRTB Paramter for the ad-viewer's age
+	AgeParameter = "a"
+)
 
-		if bid.BidPrice > topBid.BidPrice {
-			topBid.Advertiser = bid.Advertiser
-			topBid.BidPrice = bid.BidPrice
-			topBid.AdURL = bid.AdURL
-			topBid.AdDescription = bid.AdDescription
-		}
-	}
-
-	return topBid
+// List advertisers enabled for bidding
+var advertisers = []advertiser{
+	cookingAdvertiser,
+	moviesAdvertiser,
+	sportsAdvertiser,
+	workingAdvertiser,
 }
 
-// Getting the bids
+// Core Advertiser Unit
+type advertiser struct {
+	name     string
+	bidConfs []bidConf
+}
+
+// Core Ad Unit
+type bidConf struct {
+	adURL         string
+	shape         string
+	adDescription string
+	rules         []rule
+}
+
+// Core rule unit for determining bid value
+type rule struct {
+	param     string
+	condition func(string) bool
+	impact    int
+}
+
+// BidObj contains the information of the top bid and returns it to the DSP
 type BidObj struct {
 	Advertiser    string
 	BidPrice      int
@@ -33,6 +55,27 @@ type BidObj struct {
 	AdURL         string
 }
 
+// GetTopBidForDSP gets the top bid for all advertisers and returns the highest bid
+func GetTopBidForDSP(adRequest map[string]string) BidObj {
+
+	log.Printf("Processing request: %v", adRequest)
+
+	topBid := BidObj{}
+
+	for _, advertiser := range advertisers {
+
+		bid := getTopBidForAdvertiser(adRequest, advertiser)
+
+		if bid.BidPrice > topBid.BidPrice {
+
+			topBid = bid
+		}
+	}
+
+	return topBid
+}
+
+// getTopBidForAdvertiser gets the top bid for an advertiser
 func getTopBidForAdvertiser(adRequest map[string]string, seller advertiser) BidObj {
 
 	topBid := BidObj{
@@ -44,6 +87,7 @@ func getTopBidForAdvertiser(adRequest map[string]string, seller advertiser) BidO
 		bidConfig, bid := getBid(adRequest, bidConfig)
 
 		if bid > topBid.BidPrice {
+
 			topBid.BidPrice = bid
 			topBid.AdURL = bidConfig.adURL
 			topBid.AdDescription = bidConfig.adDescription
@@ -53,11 +97,12 @@ func getTopBidForAdvertiser(adRequest map[string]string, seller advertiser) BidO
 	return topBid
 }
 
+// getBid gets one of the bids of an advertiser, an advertiser can have multiple bidding configurations
 func getBid(adRequest map[string]string, bidConfiguarion bidConf) (bidConf, int) {
 
 	bid := 0
 
-	if bidConfiguarion.shape != adRequest["s"] {
+	if bidConfiguarion.shape != adRequest[ShapeParameter] {
 		return bidConfiguarion, 0
 	}
 
@@ -68,36 +113,4 @@ func getBid(adRequest map[string]string, bidConfiguarion bidConf) (bidConf, int)
 	}
 
 	return bidConfiguarion, bid
-}
-
-// ADVERTISERS CONFIGURATION HERE
-
-// Core rule unit for determining bid
-type rule struct {
-	param     string
-	condition func(string) bool
-	impact    int
-}
-
-// Core Ad Unit
-type bidConf struct {
-	adURL         string
-	shape         string
-	adDescription string
-	rules         []rule
-}
-
-// Core Advertise Unit
-type advertiser struct {
-	name     string
-	bidConfs []bidConf
-}
-
-// ADVERTISERS DATA HERE
-
-var advertisers = []advertiser{
-	cookingAdvertiser,
-	moviesAdvertiser,
-	sportsAdvertiser,
-	workingAdvertiser,
 }

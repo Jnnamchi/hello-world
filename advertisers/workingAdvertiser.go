@@ -2,8 +2,10 @@ package advertisers
 
 import "strconv"
 
+var workingAdvertiserName = "working"
+
 var workingAdvertiser = advertiser{
-	name: "working",
+	name: workingAdvertiserName,
 	bidConfs: []bidConf{
 		{
 			adURL:         "http://www.baltimoretherapyspot.com/wp-content/uploads/2013/07/Orton-Gollingham-to-be-emailed.jpg",
@@ -11,21 +13,21 @@ var workingAdvertiser = advertiser{
 			adDescription: "Tall working ad for children",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "working"
+						return likes == workingAdvertiserName
 					},
 					impact: 5,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "working"
+						return dislikes == workingAdvertiserName
 					},
 					impact: -5,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {
@@ -43,27 +45,27 @@ var workingAdvertiser = advertiser{
 			adDescription: "Tall working ad for college students",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "working"
+						return likes == workingAdvertiserName
 					},
 					impact: 3,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "working"
+						return dislikes == workingAdvertiserName
 					},
 					impact: -2,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {
 							return false
 						}
-						return (ageInt > 17 && ageInt <= 65)
+						return (ageInt > 17 && ageInt <= 25)
 					},
 					impact: 6,
 				},
@@ -75,21 +77,21 @@ var workingAdvertiser = advertiser{
 			adDescription: "Tall working ad for adults",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "working"
+						return likes == workingAdvertiserName
 					},
 					impact: 5,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "working"
+						return dislikes == workingAdvertiserName
 					},
 					impact: -5,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {
@@ -107,21 +109,21 @@ var workingAdvertiser = advertiser{
 			adDescription: "Wide working ad for college students",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "working"
+						return likes == workingAdvertiserName
 					},
 					impact: 3,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "working"
+						return dislikes == workingAdvertiserName
 					},
 					impact: -2,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {
@@ -139,21 +141,21 @@ var workingAdvertiser = advertiser{
 			adDescription: "Wide working ad for adults",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "working"
+						return likes == workingAdvertiserName
 					},
 					impact: 5,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "working"
+						return dislikes == workingAdvertiserName
 					},
 					impact: -5,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {

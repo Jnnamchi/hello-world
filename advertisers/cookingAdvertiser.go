@@ -1,9 +1,13 @@
 package advertisers
 
-import "strconv"
+import (
+	"strconv"
+)
+
+var cookingAdvertiserName = "cooking"
 
 var cookingAdvertiser = advertiser{
-	name: "cooking",
+	name: cookingAdvertiserName,
 	bidConfs: []bidConf{
 		{
 			adURL:         "https://www.advertgallery.com/wp-content/uploads/2017/12/skywalk-fest-healthy-holiday-cooking-ad-the-hindu-chennai-19-12-2017.jpg",
@@ -11,21 +15,21 @@ var cookingAdvertiser = advertiser{
 			adDescription: "Tall cooking ad for individual under 13 years old.",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "cooking"
+						return likes == cookingAdvertiserName
 					},
 					impact: 3,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "cooking"
+						return dislikes == cookingAdvertiserName
 					},
 					impact: -3,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {
@@ -43,21 +47,21 @@ var cookingAdvertiser = advertiser{
 			adDescription: "Tall cooking ad for middle aged adults.",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "cooking"
+						return likes == cookingAdvertiserName
 					},
 					impact: 5,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "cooking"
+						return dislikes == cookingAdvertiserName
 					},
 					impact: -5,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {
@@ -75,21 +79,21 @@ var cookingAdvertiser = advertiser{
 			adDescription: "Tall cooking ad for senior citizens.",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "cooking"
+						return likes == cookingAdvertiserName
 					},
 					impact: 3,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "cooking"
+						return dislikes == cookingAdvertiserName
 					},
 					impact: -5,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {
@@ -107,21 +111,21 @@ var cookingAdvertiser = advertiser{
 			adDescription: "Wide cooking ad for adults and children.",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "cooking"
+						return likes == cookingAdvertiserName
 					},
 					impact: 3,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "cooking"
+						return dislikes == cookingAdvertiserName
 					},
 					impact: -5,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {
@@ -139,21 +143,21 @@ var cookingAdvertiser = advertiser{
 			adDescription: "Wide cooking ad for senior citizens.",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "cooking"
+						return likes == cookingAdvertiserName
 					},
 					impact: 3,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "cooking"
+						return dislikes == cookingAdvertiserName
 					},
 					impact: -5,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {

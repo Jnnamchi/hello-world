@@ -2,8 +2,10 @@ package advertisers
 
 import "strconv"
 
+var sportsAdvertiserName = "sports"
+
 var sportsAdvertiser = advertiser{
-	name: "sports",
+	name: sportsAdvertiserName,
 	bidConfs: []bidConf{
 		{
 			adURL:         "https://i.pinimg.com/originals/2b/1e/15/2b1e159f172936e3470fc41d09bf7969.jpg",
@@ -11,21 +13,21 @@ var sportsAdvertiser = advertiser{
 			adDescription: "Tall sports summer camp ad for children and teenagers",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "sports"
+						return likes == sportsAdvertiserName
 					},
 					impact: 5,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "sports"
+						return dislikes == sportsAdvertiserName
 					},
 					impact: -3,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {
@@ -33,7 +35,7 @@ var sportsAdvertiser = advertiser{
 						}
 						return ageInt < 13
 					},
-					impact: 6,
+					impact: 4,
 				},
 			},
 		},
@@ -43,29 +45,29 @@ var sportsAdvertiser = advertiser{
 			adDescription: "Tall sports ad for adults",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "sports"
+						return likes == sportsAdvertiserName
 					},
 					impact: 5,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "sports"
+						return dislikes == sportsAdvertiserName
 					},
 					impact: -5,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {
 							return false
 						}
-						return (ageInt > 17 && ageInt <= 65)
+						return ageInt > 17
 					},
-					impact: 2,
+					impact: 5,
 				},
 			},
 		},
@@ -75,21 +77,21 @@ var sportsAdvertiser = advertiser{
 			adDescription: "Wide sports ad for children and teenagers",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "sports"
+						return likes == sportsAdvertiserName
 					},
 					impact: 5,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "sports"
+						return dislikes == sportsAdvertiserName
 					},
 					impact: -5,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {
@@ -107,21 +109,21 @@ var sportsAdvertiser = advertiser{
 			adDescription: "Wide sports ad for adults",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "sports"
+						return likes == sportsAdvertiserName
 					},
 					impact: 4,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "sports"
+						return dislikes == sportsAdvertiserName
 					},
 					impact: -5,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {

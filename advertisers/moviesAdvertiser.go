@@ -2,8 +2,10 @@ package advertisers
 
 import "strconv"
 
+var moviesAdvertiserName = "movies"
+
 var moviesAdvertiser = advertiser{
-	name: "movies",
+	name: moviesAdvertiserName,
 	bidConfs: []bidConf{
 		{
 			adURL:         "http://4.bp.blogspot.com/-VZPczy5xTjE/UUDNVhKBCGI/AAAAAAAAC78/8P05IBZbQdE/s1600/croods-poster.jpg",
@@ -11,21 +13,21 @@ var moviesAdvertiser = advertiser{
 			adDescription: "Tall movie ad for children and teenagers.",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "movies"
+						return likes == moviesAdvertiserName
 					},
 					impact: 3,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "movies"
+						return dislikes == moviesAdvertiserName
 					},
 					impact: -4,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {
@@ -43,21 +45,21 @@ var moviesAdvertiser = advertiser{
 			adDescription: "Tall movie ad for adults and seniors",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "movies"
+						return likes == moviesAdvertiserName
 					},
 					impact: 4,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "movies"
+						return dislikes == moviesAdvertiserName
 					},
 					impact: -5,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {
@@ -75,21 +77,21 @@ var moviesAdvertiser = advertiser{
 			adDescription: "Wide movie ad for children and teenagers.",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "movies"
+						return likes == moviesAdvertiserName
 					},
 					impact: 3,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "movies"
+						return dislikes == moviesAdvertiserName
 					},
 					impact: -4,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {
@@ -107,21 +109,21 @@ var moviesAdvertiser = advertiser{
 			adDescription: "Wide movie ad for adults and seniors",
 			rules: []rule{
 				{
-					param: "l",
+					param: LikesParameter,
 					condition: func(likes string) bool {
-						return likes == "movies"
+						return likes == moviesAdvertiserName
 					},
 					impact: 4,
 				},
 				{
-					param: "d",
+					param: DislikesParameter,
 					condition: func(dislikes string) bool {
-						return dislikes == "movies"
+						return dislikes == moviesAdvertiserName
 					},
 					impact: -5,
 				},
 				{
-					param: "a",
+					param: AgeParameter,
 					condition: func(age string) bool {
 						ageInt, err := strconv.Atoi(age)
 						if err != nil {
