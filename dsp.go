@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"hello-world/advertisers"
+	"../hello-world/advertisers"
 	"log"
 	"net/http"
 )
@@ -13,7 +13,7 @@ func main() {
 	log.Printf("Starting up Demand Side Platform ...")
 
 	http.HandleFunc("/ixrtb", handleAdRequest)
-	log.Fatal(http.ListenAndServe("10.65.106.14:8080", nil))
+	log.Fatal(http.ListenAndServe("10.65.106.25:8080", nil))
 }
 
 func handleAdRequest(w http.ResponseWriter, r *http.Request) {
@@ -35,13 +35,13 @@ func handleAdRequest(w http.ResponseWriter, r *http.Request) {
 
 		topBid := advertisers.GetTopBidForDSP(bidRequest)
 
-		returnBidResponses(&w, []advertisers.BidObj{topBid})
+		returnBidResponses(&w, topBid)
 	default:
 		fmt.Fprintf(w, "Sorry, only POST methods are supported.")
 	}
 }
 
-func returnBidResponses(w *http.ResponseWriter, result []advertisers.BidObj) {
+func returnBidResponses(w *http.ResponseWriter, result advertisers.BidObj) {
 	writer := *w
 
 	marshalled, err := json.Marshal(result)
