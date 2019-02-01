@@ -40,7 +40,7 @@ var sportsAdvertiser = advertiser{
 			},
 		},
 		{
-			adURL:         "https://d3nuqriibqh3vw.cloudfront.net/lucozade-sport-rugby-ad-3_aotw.jpgg",
+			adURL:         "https://d3nuqriibqh3vw.cloudfront.net/lucozade-sport-rugby-ad-3_aotw.jpg",
 			shape:         "tall",
 			adDescription: "Tall sports ad for adults",
 			rules: []rule{
