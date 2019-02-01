@@ -13,6 +13,7 @@ import (
 func main() {
 
 	log.Printf("Starting up Demand Side Platform ...")
+
 	confirmBlinkingWorks()
 
 	http.HandleFunc("/ixrtb", handleAdRequest)
@@ -38,7 +39,7 @@ func handleAdRequest(w http.ResponseWriter, r *http.Request) {
 
 		topBid := advertisers.GetTopBidForDSP(bidRequest)
 
-		// blink.Blink(advertisers.AdvertiserColors[topBid.Advertiser])
+		blink.Blink(advertisers.AdvertiserColors[topBid.Advertiser])
 
 		returnBidResponses(&w, topBid)
 	default:
