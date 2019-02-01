@@ -3,10 +3,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"hello-world/advertisers"
-	"hello-world/blink"
 	"log"
 	"net/http"
+
+	"github.com/jnnamchi/hello-world/advertisers"
+	"github.com/jnnamchi/hello-world/blink"
 )
 
 func main() {
