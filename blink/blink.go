@@ -32,6 +32,6 @@ func Blink(color string) {
 
 	// Toggle once for 100 milliseconds
 	pin.Toggle()
-	time.Sleep(time.Millisecond * 100)
+	time.Sleep(time.Millisecond * 200)
 	pin.Toggle()
 }
