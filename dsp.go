@@ -13,8 +13,7 @@ import (
 func main() {
 
 	log.Printf("Starting up Demand Side Platform ...")
-	blink.Blink("color1")
-	blink.Blink("color2")
+	confirmBlinkingWorks()
 
 	http.HandleFunc("/ixrtb", handleAdRequest)
 	log.Fatal(http.ListenAndServe(":8080", nil))
@@ -39,7 +38,7 @@ func handleAdRequest(w http.ResponseWriter, r *http.Request) {
 
 		topBid := advertisers.GetTopBidForDSP(bidRequest)
 
-		blink.Blink("color1")
+		// blink.Blink(advertisers.AdvertiserColors[topBid.Advertiser])
 
 		returnBidResponses(&w, topBid)
 	default:
@@ -60,4 +59,12 @@ func returnBidResponses(w *http.ResponseWriter, result advertisers.BidObj) {
 	writer.Header().Add("Content-Type", "application/json")
 	writer.WriteHeader(200)
 	writer.Write(marshalled)
+}
+
+func confirmBlinkingWorks() {
+
+	for i := 0; i < 5; i++ {
+		blink.Blink("color1")
+		blink.Blink("color2")
+	}
 }

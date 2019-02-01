@@ -16,6 +16,16 @@ var (
 
 	// AgeParameter is the IXRTB Paramter for the ad-viewer's age
 	AgeParameter = "a"
+
+	// AdvertiserColors assigns a particular color category to an advertiser, it will be
+	// used by the raspberryPi's blink.go method to shine the correct light provided a given
+	// advertiser.
+	AdvertiserColors = map[string]string{
+		cookingAdvertiser.name: "color1",
+		sportsAdvertiser.name:  "color2",
+		moviesAdvertiser.name:  "color1",
+		workingAdvertiser.name: "color2",
+	}
 )
 
 // List advertisers enabled for bidding
