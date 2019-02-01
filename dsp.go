@@ -3,9 +3,10 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"../hello-world/advertisers"
 	"log"
 	"net/http"
+
+	"github.com/jnnamchi/hello-world/advertisers"
 )
 
 func main() {
@@ -13,7 +14,7 @@ func main() {
 	log.Printf("Starting up Demand Side Platform ...")
 
 	http.HandleFunc("/ixrtb", handleAdRequest)
-	log.Fatal(http.ListenAndServe("10.65.106.25:8080", nil))
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 func handleAdRequest(w http.ResponseWriter, r *http.Request) {
