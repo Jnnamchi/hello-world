@@ -86,6 +86,8 @@ func returnBidResponses(w *http.ResponseWriter, result advertisers.BidObj) {
 
 func confirmLEDsBlink() {
 
+	blink.InitalizePinAddress()
+
 	for i := 0; i < 5; i++ {
 		blink.Blink("color1")
 		blink.Blink("color2")
