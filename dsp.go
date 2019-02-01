@@ -3,15 +3,17 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"hello-world/advertisers"
+	"hello-world/blink"
 	"log"
 	"net/http"
-
-	"github.com/jnnamchi/hello-world/advertisers"
 )
 
 func main() {
 
 	log.Printf("Starting up Demand Side Platform ...")
+	blink.Blink("color1")
+	blink.Blink("color2")
 
 	http.HandleFunc("/ixrtb", handleAdRequest)
 	log.Fatal(http.ListenAndServe(":8080", nil))
@@ -36,7 +38,7 @@ func handleAdRequest(w http.ResponseWriter, r *http.Request) {
 
 		topBid := advertisers.GetTopBidForDSP(bidRequest)
 
-		blink("color1")
+		blink.Blink("color1")
 
 		returnBidResponses(&w, topBid)
 	default:

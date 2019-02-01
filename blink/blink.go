@@ -1,4 +1,4 @@
-package main
+package blink
 
 import (
 	"fmt"
@@ -13,7 +13,7 @@ var colorMapping = map[string]int{
 	"color2": 12,
 }
 
-func blink(color string) {
+func Blink(color string) {
 
 	// Set pin according to desired color
 	pin := rpio.Pin(colorMapping[color])
