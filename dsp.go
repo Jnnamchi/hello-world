@@ -36,6 +36,8 @@ func handleAdRequest(w http.ResponseWriter, r *http.Request) {
 
 		topBid := advertisers.GetTopBidForDSP(bidRequest)
 
+		blink("color1")
+
 		returnBidResponses(&w, topBid)
 	default:
 		fmt.Fprintf(w, "Sorry, only POST methods are supported.")
